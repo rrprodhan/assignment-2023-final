@@ -57,7 +57,10 @@ export class BuildingsDao {
     const insertData = {
       building_name: createBuildingDto.buildingName,
     };
-    return this.knex('buildings').insert(insertData).returning('id');
+    const result = await this.knex('buildings')
+      .insert(insertData)
+      .returning('id');
+    return result.map((item) => item.id);
   }
 
   async updateBuilding(
@@ -69,22 +72,23 @@ export class BuildingsDao {
         building_name: updateBuildingDto.buildingName,
       };
 
-      return this.knex
+      const result = await this.knex('buildings')
         .update(updateData)
-        .into('buildings')
         .where({ id: id })
-        .returning('id')
-        .then((res) => res ?? []);
+        .returning('id');
+
+      return result.map((item) => item.id);
     } catch (err) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
   }
 
   async deleteBuilding(id: number): Promise<boolean> {
-    return this.knex('buildings')
+    const deletedIds = await this.knex('buildings')
       .where('id', id)
       .del()
-      .returning('id')
-      .then((id) => id && id.length > 0);
+      .returning('id');
+
+    return deletedIds && deletedIds.length > 0;
   }
 }

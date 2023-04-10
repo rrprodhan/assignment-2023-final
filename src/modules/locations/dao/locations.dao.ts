@@ -81,7 +81,7 @@ export class LocationsDao {
       sql.orderBy(`l.id`, `asc`);
     }
 
-    return knexnest(sql).then((data) =>
+    return await knexnest(sql).then((data) =>
       plainToClass(LocationsDto, data ?? [], { groups: ['all'] }),
     );
   }
@@ -93,8 +93,10 @@ export class LocationsDao {
       location_area: createLocationDto.locationArea,
       building_id: createLocationDto.buildingId,
     };
-
-    return this.knex('locations').insert(insertData).returning('id');
+    const result = await this.knex('locations')
+      .insert(insertData)
+      .returning('id');
+    return result.map((item) => item.id);
   }
 
   async updateLocation(
@@ -109,22 +111,28 @@ export class LocationsDao {
         building_id: updateLocationDto.buildingId,
       };
 
-      return this.knex
+      const result = await this.knex
         .update(updateData)
         .into('locations')
         .where({ id: id })
-        .returning('id')
-        .then((res) => res ?? []);
+        .returning('id');
+
+      return result.map((item) => item.id);
     } catch (err) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
   }
 
   async deleteLocation(id: number): Promise<boolean> {
-    return this.knex('locations')
-      .where('id', id)
-      .del()
-      .returning('id')
-      .then((id) => id && id.length > 0);
+    try {
+      const deletedIds = await this.knex('locations')
+        .where('id', id)
+        .del()
+        .returning('id');
+
+      return deletedIds && deletedIds.length > 0;
+    } catch (err) {
+      throw new HttpException(err, HttpStatus.BAD_REQUEST);
+    }
   }
 }
