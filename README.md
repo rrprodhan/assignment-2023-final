@@ -84,7 +84,7 @@ npm run start:dev
 
 ### Get All Locations
 ```
-GET /api/locations
+GET http://localhost:3000/api/locations
 ```
 ### Query Parameters:
 - `filter` (optional): Filter locations by properties.
@@ -94,7 +94,7 @@ GET /api/locations
 - `locationArea` (optional, number): Filter by location area.
 - `buildingId` (optional, number): Filter by building ID.
 ```
-Example: /api/locations?filter[locationName]=Location1&filter
+Example: http://localhost:3000/api/locations?filter[locationName]=Location1&filter
 [locationArea]=100
 ```
 ### Response:
@@ -105,7 +105,7 @@ Body: Array of LocationsDto objects
 
 ### Get a location by ID
 ```
-GET /api/locations/:id
+GET http://localhost:3000/api/locations/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the location to retrieve.
@@ -117,7 +117,7 @@ Body: LocationsDto object
 
 ### Create a new location
 ```
-POST /api/locations
+POST http://localhost:3000/api/locations
 ```
 ### Request Body:
 - `locationName` (required, string): Name of the location.
@@ -132,7 +132,7 @@ Body: Array of location IDs
 
 ### Update a location by ID
 ```
-PUT /api/locations/:id
+PUT http://localhost:3000/api/locations/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the location to update.
@@ -149,7 +149,7 @@ Body: Array of location IDs
 
 ### Delete a location by ID.
 ```
-DELETE /api/locations/:id
+DELETE http://localhost:3000/api/locations/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the location to delete.
@@ -163,14 +163,14 @@ Body: true if the location was deleted successfully, otherwise false
 
 ### Get All Buildings
 ```
-GET /api/buildings
+GET http://localhost:3000/api/buildings
 ```
 ### Query Parameters:
 - `filter` (optional): Filter locations by properties.
 - `id` (optional, number): Filter by building id.
 - `buildingName` (optional, string): Filter by building name.
 ```
-Example: /api/buildings?filter[buildingName]=Building1
+Example: http://localhost:3000/api/buildings?filter[buildingName]=Building1
 ```
 ### Response:
 ```
@@ -180,7 +180,7 @@ Body: Array of BuildingsDto objects
 
 ### Get a building by ID
 ```
-GET /api/buildings/:id
+GET http://localhost:3000/api/buildings/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the building to retrieve.
@@ -192,7 +192,7 @@ Body: BuildingsDto object
 
 ### Create a new building
 ```
-POST /api/buildings
+POST http://localhost:3000/api/buildings
 ```
 ### Request Body:
 - `buildingName` (required, string): Name of the building.
@@ -204,7 +204,7 @@ Body: Array of building IDs
 
 ### Update a building by ID
 ```
-PUT /api/buildings/:id
+PUT http://localhost:3000/api/buildings/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the building to update.
@@ -218,7 +218,7 @@ Body: Array of building IDs
 
 ### Delete a building by ID.
 ```
-DELETE /api/buildings/:id
+DELETE http://localhost:3000/api/buildings/:id
 ```
 ### Parameters:
 - `id` (required, number): ID of the building to delete.
