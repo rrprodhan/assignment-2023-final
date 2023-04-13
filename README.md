@@ -42,8 +42,26 @@ cd navigation-api
 npm install
 ```
 3. Set up the database:
-- Create a PostgreSQL database with the name "location-db" (or any other name of your choice)
-- Update the database connection configuration in the .env file to match your database setup
+- To create a database named location-db in PGAdmin or PostgreSQL, follow these steps:
+- Open PGAdmin or PostgreSQL and connect to your server.
+- Right-click on the Databases folder and select Create > Database.
+- In the Create Database dialog box, enter location-db as the name of the database.
+- Set the owner of the database to a user with appropriate privileges.
+- Click the Save button to create the database.
+
+Or,
+
+- Alternatively, you can use SQL commands to create the database. Open the SQL editor in PGAdmin or PostgreSQL and enter the following command:
+```
+CREATE DATABASE location-db;
+```
+- To add a user with privileges to the location-db database, you can use the following SQL command:
+```
+CREATE USER username WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE "location-db" TO username;
+```
+- Replace username with the desired username and password for the user. The GRANT ALL PRIVILEGES command grants the user all privileges on the   location-db database.
+- Execute the SQL command in PGAdmin or PostgreSQL to create the user and grant privileges to the database.
 4. Create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
 ```
 DATABASE_CONNECTION_DATABASE=location-db
