@@ -41,7 +41,7 @@ git clone https://github.com/rrprodhan/assignment-2023-final.git
 cd navigation-api
 npm install
 ```
-3. Rename the existing .env.sample file to .env, or create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
+3. Rename the existing .env.sample file to .env: https://github.com/rrprodhan/assignment-2023-final/blob/main/.env.sample, or create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
 ```
 DATABASE_CONNECTION_DATABASE=location-db
 DATABASE_CONNECTION_USERNAME=postgres
