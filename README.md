@@ -63,8 +63,8 @@ CREATE DATABASE location-db;
 ```
 - To add a user with privileges to the location-db database, you can use the following SQL command:
 ```
-CREATE USER username WITH PASSWORD 'password';
-GRANT ALL PRIVILEGES ON DATABASE "location-db" TO username;
+CREATE USER username WITH PASSWORD 'postgres';
+GRANT ALL PRIVILEGES ON DATABASE "location-db" TO postgres;
 ```
 - Replace username with the desired username and password for the user. The GRANT ALL PRIVILEGES command grants the user all privileges on the   location-db database.
 - Execute the SQL command in PGAdmin or PostgreSQL to create the user and grant privileges to the database.
