@@ -41,7 +41,13 @@ git clone https://github.com/rrprodhan/assignment-2023-final.git
 cd navigation-api
 npm install
 ```
-3. Set up the database:
+3. Create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
+```
+DATABASE_CONNECTION_DATABASE=location-db
+DATABASE_CONNECTION_USERNAME=postgres
+DATABASE_CONNECTION_PASSWORD=postgres
+```
+4. Set up the database:
 - To create a database named location-db in PGAdmin or PostgreSQL, follow these steps:
 - Open PGAdmin or PostgreSQL and connect to your server.
 - Right-click on the Databases folder and select Create > Database.
@@ -62,12 +68,6 @@ GRANT ALL PRIVILEGES ON DATABASE "location-db" TO username;
 ```
 - Replace username with the desired username and password for the user. The GRANT ALL PRIVILEGES command grants the user all privileges on the   location-db database.
 - Execute the SQL command in PGAdmin or PostgreSQL to create the user and grant privileges to the database.
-4. Create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
-```
-DATABASE_CONNECTION_DATABASE=location-db
-DATABASE_CONNECTION_USERNAME=postgres
-DATABASE_CONNECTION_PASSWORD=postgres
-```
 5. Run the migration to create the database tables and seed data into them:
 ```
 npx knex migrate:latest
