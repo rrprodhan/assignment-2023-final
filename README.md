@@ -38,7 +38,7 @@ git clone https://github.com/rrprodhan/assignment-2023-final.git
 ```
 2. Install dependencies:
 ```
-cd navigation-api
+cd assignment-2023-final
 npm install
 ```
 3. Rename the existing .env.sample file to .env: https://github.com/rrprodhan/assignment-2023-final/blob/main/.env.sample, or create a .env file in the project root directory and copy the contents from .env.sample file to the .env file and change the database connection configuration according to your database settings:
